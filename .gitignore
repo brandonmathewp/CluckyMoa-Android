@@ -1,0 +1,38 @@
+# Android build artifacts
+bin/
+gen/
+out/
+build/
+.gradle/
+AS_Checkouts/
+
+# Firebase / Google Services (Sensitive configuration)
+# Note: Keep google-services.json if you want it in VCS, 
+# but usually excluded in open-source to protect API keys.
+# google-services.json
+
+# Firebase specific local files
+.firebase/
+firebase-debug.log*
+
+# IDE Specific (AIDE / Android Code Studio / IntelliJ)
+.idea/
+*.iml
+*.ipr
+*.iws
+.navigation/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Local configuration (Crucial for mobile dev)
+local.properties
+
+# Keystores (Never commit your signing keys)
+*.jks
+*.keystore
+*.p12
+
+# OS / File System
+.DS_Store
+thumbs.db

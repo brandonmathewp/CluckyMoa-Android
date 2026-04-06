@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "890635319941",
+    "firebase_url": "https://cluckymoa-android-846da-default-rtdb.firebaseio.com",
+    "project_id": "cluckymoa-android-846da",
+    "storage_bucket": "cluckymoa-android-846da.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890635319941:android:a96e0a918ba358876907ec",
+        "android_client_info": {
+          "package_name": "com.cluckymoa.game"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHSfU1JYz30uBkzKsn-OWpOP7gt16L0-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
