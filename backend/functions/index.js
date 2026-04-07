@@ -26,6 +26,7 @@ const { BREEDS } = require("./config/breedData");
 const { validateIdempotencyToken } = require("./utils/idempotency");
 const { createSeededRng, weightedPick } = require("./utils/rng");
 const { requireAuth, requireFields, requireAdmin } = require("./utils/validation");
+const { sendDiscordNotification } = require("./utils/discord");
 
 setGlobalOptions({ maxInstances: 10 });
 
@@ -48,6 +49,12 @@ function httpError(code, message) {
   const err = new Error(message);
   err.code = code;
   return err;
+}
+
+const MILLIS_PER_HOUR = 3600 * 1000;
+
+function getDiscordWebhookUrl() {
+  return process.env.DISCORD_WEBHOOK_URL || null;
 }
 
 function rarityWeight(rarity) {
@@ -143,6 +150,7 @@ exports.getRespecPreview = onCall(async(request) => {
 
 exports.confirmRespec = onCall(async(request) => {
   const uid = requireAuth(request);
+  await checkBan(uid);
   requireFields(request.data, ["chickenId", "idempotencyToken"]);
   const { chickenId, idempotencyToken } = request.data;
 
@@ -254,6 +262,7 @@ const NODE_PREREQUISITES = {
 
 exports.assignSkillNode = onCall(async(request) => {
   const uid = requireAuth(request);
+  await checkBan(uid);
   requireFields(request.data, ["chickenId", "nodeId"]);
   const { chickenId, nodeId } = request.data;
 
@@ -288,6 +297,7 @@ exports.assignSkillNode = onCall(async(request) => {
 
 exports.applyTrainingItem = onCall(async(request) => {
   const uid = requireAuth(request);
+  await checkBan(uid);
   requireFields(request.data, ["chickenId", "itemTier"]);
   const { chickenId, itemTier } = request.data;
 
@@ -381,6 +391,7 @@ exports.breedingPreview = onCall(async(request) => {
 
 exports.breedingConfirm = onCall(async(request) => {
   const uid = requireAuth(request);
+  await checkBan(uid);
   requireFields(request.data, ["parentAId", "parentBId", "idempotencyToken"]);
   const { parentAId, parentBId, consumables = [], idempotencyToken } = request.data;
 
@@ -571,6 +582,26 @@ exports.careAction = onCall(async(request) => {
 
 // ── 6. Hatching ────────────────────────────────────────────────────────────
 
+const CLASS_TRAIT_POOL = {
+  Air: ["glideAffinity", "windResist"],
+  Ocean: ["swimAffinity", "waterBreathing"],
+  Ground: ["burrowAffinity", "groundedStrike"],
+};
+
+async function checkBan(uid) {
+  const banSnap = await db.collection("bans")
+      .where("userId", "==", uid)
+      .where("active", "==", true)
+      .limit(1)
+      .get();
+  if (!banSnap.empty) {
+    const ban = banSnap.docs[0].data();
+    if (ban.expiresAt && ban.expiresAt.toMillis() > Date.now()) {
+      throw httpError("permission-denied", "Account is banned");
+    }
+  }
+}
+
 async function hatchEggLogic(eggId, ownerId) {
   const eggRef = db.collection("eggs").doc(eggId);
   const eggSnap = await eggRef.get();
@@ -585,6 +616,7 @@ async function hatchEggLogic(eggId, ownerId) {
   }
 
   const { genomeSeedBlob } = egg;
+  const careModifiers = egg.careModifiers || {};
   const rng = createSeededRng(genomeSeedBlob.seed);
 
   const classWeights = {};
@@ -598,7 +630,10 @@ async function hatchEggLogic(eggId, ownerId) {
   const primaryClass = weightedPick(classWeights, rng);
 
   const rarity = egg.rarity || weightedPick({ common: 0.6, uncommon: 0.3, rare: 0.09, legendary: 0.01 }, rng);
-  const mutationHappened = rng() < ARCHETYPE_CANDIDATE_CHANCE;
+
+  // Phase 3C: sing care modifier increases mutation chance
+  const mutationChanceAdjusted = ARCHETYPE_CANDIDATE_CHANCE + (careModifiers.sing || 0) * 0.0001;
+  const mutationHappened = rng() < mutationChanceAdjusted;
 
   const variance = () => 1 + (rng() - 0.5) * 0.2;
   const baseStats = {
@@ -613,6 +648,63 @@ async function hatchEggLogic(eggId, ownerId) {
   const chosenBreed = classBreeds.length > 0 ?
     classBreeds[Math.floor(rng() * classBreeds.length)] :
     BREEDS[0];
+
+  // Phase 3A: Composite secondary traits
+  const secondaryTraits = [];
+  const parentsDifferInClass = genomeSeedBlob.parentAClass !== genomeSeedBlob.parentBClass;
+  if (parentsDifferInClass) {
+    const nurtureBonus = (careModifiers.nurture || 0) * 0.01;
+    const compositeRoll = rng();
+    if (compositeRoll < genomeSeedBlob.compositeChance + nurtureBonus) {
+      const otherClass = genomeSeedBlob.parentAClass === primaryClass ?
+        genomeSeedBlob.parentBClass :
+        genomeSeedBlob.parentAClass;
+      const traitPool = CLASS_TRAIT_POOL[otherClass] || [];
+      const traitCount = traitPool.length > 1 && rng() > 0.5 ? 2 : 1;
+      // Fisher-Yates shuffle for uniform distribution
+      const shuffled = [...traitPool];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      for (let i = 0; i < Math.min(traitCount, shuffled.length); i++) {
+        secondaryTraits.push(shuffled[i]);
+      }
+    }
+  }
+
+  // Phase 3B: Ability blending
+  const blendRoll = rng();
+  let primaryAbility = chosenBreed.primaryAbility;
+  let abilitySource = "inherited";
+  if (blendRoll < BLEND_CHANCE) {
+    const otherClass = genomeSeedBlob.parentAClass === primaryClass ?
+      genomeSeedBlob.parentBClass :
+      genomeSeedBlob.parentAClass;
+    const otherBreeds = BREEDS.filter((b) => b.primaryClass === otherClass);
+    const otherBreed = otherBreeds.length > 0 ?
+      otherBreeds[Math.floor(rng() * otherBreeds.length)] :
+      chosenBreed;
+    const blended = {
+      name: `${chosenBreed.primaryAbility.name} (Hybrid)`,
+      description: `A hybrid ability blending ${chosenBreed.name} and ${otherBreed.name} techniques.`,
+      damage: Math.round((chosenBreed.primaryAbility.damage + otherBreed.primaryAbility.damage) / 2),
+      energyCost: Math.round((chosenBreed.primaryAbility.energyCost + otherBreed.primaryAbility.energyCost) / 2),
+      cooldown: Math.round((chosenBreed.primaryAbility.cooldown + otherBreed.primaryAbility.cooldown) / 2),
+    };
+    primaryAbility = blended;
+    abilitySource = "blended";
+  }
+
+  // Phase 3D: Visual blending - vfxPaletteId
+  let vfxPaletteId = "default";
+  if (parentsDifferInClass) {
+    const classes = [genomeSeedBlob.parentAClass, genomeSeedBlob.parentBClass].sort();
+    vfxPaletteId = `hybrid_${classes[0]}_${classes[1]}`;
+  }
+
+  // Phase 3C: warm modifier preserves rarity tier
+  const rarityPreserved = !!(careModifiers.warm && rarity === egg.rarity);
 
   let uniqueModifierTag = null;
   for (let attempt = 0; attempt < UNIQUE_TAG_MAX_ATTEMPTS; attempt++) {
@@ -640,13 +732,21 @@ async function hatchEggLogic(eggId, ownerId) {
     uniqueModifierTag = `FALLBACK_${eggId}`;
   }
 
+  // Phase 4E: Trade lock
+  const tradeLock = {};
+  if (rarity === "rare") {
+    tradeLock.tradeLockUntil = admin.firestore.Timestamp.fromMillis(now + 24 * MILLIS_PER_HOUR);
+  } else if (rarity === "legendary") {
+    tradeLock.tradeLockUntil = admin.firestore.Timestamp.fromMillis(now + 72 * MILLIS_PER_HOUR);
+  }
+
   const chickenRef = db.collection("chickens").doc();
   const chickenData = {
     ownerId: ownerId || egg.ownerId,
     breedId: chosenBreed.breedId,
     name: chosenBreed.name,
     primaryClass,
-    secondaryTraits: [],
+    secondaryTraits,
     level: 1,
     xp: 0,
     unspentSkillPoints: 0,
@@ -660,15 +760,18 @@ async function hatchEggLogic(eggId, ownerId) {
     breedCount: 0,
     lastBreedAt: null,
     baseStats,
-    primaryAbility: chosenBreed.primaryAbility,
+    primaryAbility,
     ultimateAbility: chosenBreed.ultimateAbility,
+    abilitySource,
     visualRefs: {
       modelId: primaryClass.toLowerCase(),
       skinId: rarity,
-      vfxPaletteId: "default",
+      vfxPaletteId,
     },
     rarity,
+    rarityPreserved,
     uniqueModifierTag,
+    tradeLock: Object.keys(tradeLock).length > 0 ? tradeLock : null,
     hatchedAt: admin.firestore.FieldValue.serverTimestamp(),
   };
 
@@ -686,6 +789,22 @@ async function hatchEggLogic(eggId, ownerId) {
         reviewedFlag: false,
         telemetrySummary: {},
       });
+
+      // Phase 4D: Discord notification for mutation
+      const webhookUrl = getDiscordWebhookUrl();
+      if (webhookUrl) {
+        sendDiscordNotification(webhookUrl, {
+          title: "✨ Archetype Candidate Hatched!",
+          description: `A new archetype candidate has hatched!`,
+          fields: [
+            { name: "Chicken ID", value: chickenRef.id },
+            { name: "Rarity", value: rarity },
+            { name: "Class", value: primaryClass },
+            { name: "Owner", value: egg.ownerId },
+          ],
+          color: 0xFFD700,
+        }).catch((e) => logger.warn("Discord notification failed", { error: e.message }));
+      }
     }
 
     if (uniqueModifierTag && !uniqueModifierTag.startsWith("FALLBACK_")) {
@@ -694,11 +813,12 @@ async function hatchEggLogic(eggId, ownerId) {
     }
   });
 
-  return { chickenId: chickenRef.id, rarity, primaryClass, mutationHappened };
+  return { chickenId: chickenRef.id, rarity, primaryClass, mutationHappened, secondaryTraits, abilitySource };
 }
 
 exports.hatchEgg = onCall(async(request) => {
   const uid = requireAuth(request);
+  await checkBan(uid);
   const { eggId } = request.data;
   if (!eggId) throw httpError("invalid-argument", "eggId required");
 
@@ -787,6 +907,21 @@ exports.promoteCandidate = onCall(async(request) => {
     tunedParams,
     promotedAt: admin.firestore.FieldValue.serverTimestamp(),
   });
+
+  // Phase 4D: Discord notification for promotion
+  const webhookUrl = getDiscordWebhookUrl();
+  if (webhookUrl) {
+    await sendDiscordNotification(webhookUrl, {
+      title: "🏆 Archetype Candidate Promoted!",
+      description: `Candidate \`${candidateId}\` has been promoted to archetype.`,
+      fields: [
+        { name: "Candidate ID", value: candidateId },
+        { name: "Tuned Params", value: JSON.stringify(tunedParams) },
+      ],
+      color: 0x00FF00,
+    }).catch((e) => logger.warn("Discord notification failed", { error: e.message }));
+  }
+
   return { success: true };
 });
 
@@ -800,4 +935,153 @@ exports.getBreedsByArea = onCall(async(request) => {
   const { area } = request.data;
   if (!area) throw httpError("invalid-argument", "area required");
   return { breeds: BREEDS.filter((b) => b.area === area) };
+});
+
+// ── 12. Telemetry ──────────────────────────────────────────────────────────
+
+const VALID_TELEMETRY_EVENTS = new Set([
+  "breed_preview_shown", "breed_confirmed", "egg_hatched",
+  "respec_preview_shown", "respec_confirmed", "archetype_candidate_seen",
+  "archetype_promoted", "battle_completed", "trade_initiated",
+]);
+
+exports.recordTelemetryEvent = onCall(async(request) => {
+  const uid = requireAuth(request);
+  const { eventType, chickenId = null, eggId = null, metadata = {} } = request.data;
+
+  if (!eventType || !VALID_TELEMETRY_EVENTS.has(eventType)) {
+    throw httpError("invalid-argument", "Invalid or missing eventType");
+  }
+
+  await db.collection("telemetry_events").add({
+    userId: uid,
+    eventType,
+    chickenId,
+    eggId,
+    metadata,
+    createdAt: admin.firestore.FieldValue.serverTimestamp(),
+  });
+
+  return { success: true };
+});
+
+// ── 13. Candidate Telemetry Aggregation ────────────────────────────────────
+
+exports.aggregateCandidateTelemetry = onSchedule("every 1 hours", async() => {
+  const candidatesSnap = await db.collection("archetype_candidates")
+      .where("reviewedFlag", "==", false)
+      .limit(100)
+      .get();
+
+  await Promise.allSettled(candidatesSnap.docs.map(async(doc) => {
+    const candidate = doc.data();
+    const chickenId = candidate.chickenId;
+    if (!chickenId) return;
+
+    const eventsSnap = await db.collection("telemetry_events")
+        .where("chickenId", "==", chickenId)
+        .get();
+
+    const summary = { pickCount: 0, useCount: 0, battleCount: 0, tradeCount: 0 };
+    for (const ev of eventsSnap.docs) {
+      const { eventType } = ev.data();
+      if (eventType === "archetype_candidate_seen") summary.pickCount++;
+      if (eventType === "breed_confirmed") summary.useCount++;
+      if (eventType === "battle_completed") summary.battleCount++;
+      if (eventType === "trade_initiated") summary.tradeCount++;
+    }
+
+    await doc.ref.update({ telemetrySummary: summary });
+  }));
+});
+
+// ── 14. Ban / Moderation ───────────────────────────────────────────────────
+
+exports.banUser = onCall(async(request) => {
+  requireAdmin(request);
+  requireFields(request.data, ["targetUserId", "reason", "durationHours"]);
+  const { targetUserId, reason, durationHours } = request.data;
+  const adminUid = requireAuth(request);
+
+  const now = nowMs();
+  const expiresAt = new Date(now + durationHours * MILLIS_PER_HOUR);
+
+  const banRef = db.collection("bans").doc();
+  const userRef = db.collection("users").doc(targetUserId);
+
+  await db.runTransaction(async(tx) => {
+    tx.set(banRef, {
+      userId: targetUserId,
+      reason,
+      bannedAt: admin.firestore.Timestamp.fromMillis(now),
+      expiresAt: admin.firestore.Timestamp.fromDate(expiresAt),
+      bannedBy: adminUid,
+      active: true,
+    });
+    tx.set(userRef, {
+      banned: true,
+      banExpiresAt: admin.firestore.Timestamp.fromDate(expiresAt),
+    }, { merge: true });
+  });
+
+  const webhookUrl = getDiscordWebhookUrl();
+  if (webhookUrl) {
+    await sendDiscordNotification(webhookUrl, {
+      title: "🚫 User Banned",
+      description: `User \`${targetUserId}\` has been banned.`,
+      fields: [
+        { name: "Reason", value: reason },
+        { name: "Duration", value: `${durationHours} hours` },
+        { name: "Banned By", value: adminUid },
+      ],
+      color: 0xFF0000,
+    }).catch((e) => logger.warn("Discord notification failed", { error: e.message }));
+  }
+
+  return { success: true, banId: banRef.id };
+});
+
+exports.unbanUser = onCall(async(request) => {
+  requireAdmin(request);
+  requireFields(request.data, ["targetUserId"]);
+  const { targetUserId } = request.data;
+
+  const bansSnap = await db.collection("bans")
+      .where("userId", "==", targetUserId)
+      .where("active", "==", true)
+      .limit(10)
+      .get();
+
+  const userRef = db.collection("users").doc(targetUserId);
+
+  await db.runTransaction(async(tx) => {
+    for (const banDoc of bansSnap.docs) {
+      tx.update(banDoc.ref, { active: false });
+    }
+    tx.set(userRef, { banned: false, banExpiresAt: null }, { merge: true });
+  });
+
+  return { success: true };
+});
+
+// ── 15. Trade Lock ─────────────────────────────────────────────────────────
+
+exports.checkTradeLock = onCall(async(request) => {
+  requireAuth(request);
+  const { chickenId } = request.data;
+  if (!chickenId) throw httpError("invalid-argument", "chickenId required");
+
+  const snap = await db.collection("chickens").doc(chickenId).get();
+  if (!snap.exists) throw httpError("not-found", "Chicken not found");
+  const chicken = snap.data();
+
+  const now = nowMs();
+  const locked = chicken.tradeLock &&
+    chicken.tradeLock.tradeLockUntil &&
+    chicken.tradeLock.tradeLockUntil.toMillis() > now;
+
+  return {
+    canTrade: !locked,
+    tradeLockUntil: locked ? chicken.tradeLock.tradeLockUntil.toDate().toISOString() : null,
+  };
 });
