@@ -66,6 +66,17 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
+    // ── Bans (admin only) ────────────────────────────────────────────────────
+    match /bans/{banId} {
+      allow read, write: if isAdmin();
+    }
+
+    // ── Telemetry Events (write-only for authenticated users, admin read) ────
+    match /telemetry_events/{eventId} {
+      allow read: if isAdmin();
+      allow write: if false; // only Cloud Functions write telemetry
+    }
+
     // ── Default: deny all ───────────────────────────────────────────────────
     match /{document=**} {
       allow read, write: if false;

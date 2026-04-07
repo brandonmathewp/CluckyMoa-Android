@@ -1,0 +1,2600 @@
+{
+  "game_config": {
+    "version": "1.0.0",
+    "incubationSeconds": 86400,
+    "breedCosts": {
+      "common": 100,
+      "uncommon": 250,
+      "rare": 500,
+      "legendary": 1000
+    },
+    "respecBaseFee": 500,
+    "respecRefundPct": 0.5,
+    "compositeBaseChance": 0.15,
+    "archetypeCandidateChance": 0.02,
+    "blendChance": 0.15,
+    "parentCooldownMs": 86400000,
+    "parentLifetimeBreedCap": 5,
+    "weeklyBreedCap": 10,
+    "weeklyTrainingSPCap": 20,
+    "uniqueTagMaxAttempts": 5,
+    "trainingValues": {
+      "common": 10,
+      "uncommon": 25,
+      "rare": 75,
+      "epic": 150
+    }
+  },
+  "areas": {
+    "Kauai": {
+      "name": "Kauai",
+      "displayName": "Kaua'i",
+      "description": "The Garden Isle — lush valleys, sea cliffs, and tropical rivers.",
+      "unlockLevel": 1,
+      "coords": {
+        "lat": 22.0964,
+        "lng": -159.5261
+      },
+      "classDistribution": {
+        "Ocean": 3,
+        "Ground": 4,
+        "Air": 3
+      }
+    },
+    "Oahu": {
+      "name": "Oahu",
+      "displayName": "O'ahu",
+      "description": "The Gathering Place — urban jungle meets stunning coastline.",
+      "unlockLevel": 5,
+      "coords": {
+        "lat": 21.4389,
+        "lng": -158.0001
+      },
+      "classDistribution": {
+        "Ocean": 1,
+        "Ground": 6,
+        "Air": 3
+      }
+    },
+    "Maui": {
+      "name": "Maui",
+      "displayName": "Maui",
+      "description": "The Valley Isle — volcanic peaks, bamboo forests, and coral reefs.",
+      "unlockLevel": 10,
+      "coords": {
+        "lat": 20.7984,
+        "lng": -156.3319
+      },
+      "classDistribution": {
+        "Ocean": 2,
+        "Ground": 5,
+        "Air": 3
+      }
+    },
+    "Molokai": {
+      "name": "Molokai",
+      "displayName": "Moloka'i",
+      "description": "The Friendly Isle — remote sea cliffs and quiet valleys.",
+      "unlockLevel": 15,
+      "coords": {
+        "lat": 21.1444,
+        "lng": -157.0228
+      },
+      "classDistribution": {
+        "Ocean": 2,
+        "Ground": 5,
+        "Air": 3
+      }
+    },
+    "Lanai": {
+      "name": "Lanai",
+      "displayName": "Lāna'i",
+      "description": "The Pineapple Isle — dramatic rock formations and secluded bays.",
+      "unlockLevel": 20,
+      "coords": {
+        "lat": 20.8279,
+        "lng": -156.9199
+      },
+      "classDistribution": {
+        "Ocean": 2,
+        "Ground": 5,
+        "Air": 3
+      }
+    },
+    "Hawaii": {
+      "name": "Hawaii",
+      "displayName": "Hawai'i (Big Island)",
+      "description": "The Big Island — active volcanoes, black sand beaches, and diverse ecosystems.",
+      "unlockLevel": 25,
+      "coords": {
+        "lat": 19.8968,
+        "lng": -155.5828
+      },
+      "classDistribution": {
+        "Ocean": 1,
+        "Ground": 7,
+        "Air": 2
+      }
+    }
+  },
+  "skill_tree": {
+    "nodes": {
+      "primary_dmg_1": {
+        "label": "Primary Damage I",
+        "type": "primary_dmg",
+        "tier": 1,
+        "bonusDmgPct": 5
+      },
+      "primary_dmg_2": {
+        "label": "Primary Damage II",
+        "type": "primary_dmg",
+        "tier": 2,
+        "bonusDmgPct": 10
+      },
+      "primary_dmg_3": {
+        "label": "Primary Damage III",
+        "type": "primary_dmg",
+        "tier": 3,
+        "bonusDmgPct": 15
+      },
+      "primary_dmg_4": {
+        "label": "Primary Damage IV",
+        "type": "primary_dmg",
+        "tier": 4,
+        "bonusDmgPct": 20
+      },
+      "primary_dmg_5": {
+        "label": "Primary Damage V",
+        "type": "primary_dmg",
+        "tier": 5,
+        "bonusDmgPct": 25
+      },
+      "primary_cost_1": {
+        "label": "Energy Cost Reduction I",
+        "type": "primary_cost",
+        "tier": 1,
+        "costReductionPct": 5
+      },
+      "primary_cost_2": {
+        "label": "Energy Cost Reduction II",
+        "type": "primary_cost",
+        "tier": 2,
+        "costReductionPct": 10
+      },
+      "primary_cd_1": {
+        "label": "Cooldown Reduction I",
+        "type": "primary_cd",
+        "tier": 1,
+        "cdReductionPct": 5
+      },
+      "primary_cd_2": {
+        "label": "Cooldown Reduction II",
+        "type": "primary_cd",
+        "tier": 2,
+        "cdReductionPct": 10
+      },
+      "primary_fx_1": {
+        "label": "Visual FX Enhancement",
+        "type": "primary_fx",
+        "tier": 1,
+        "fxUpgrade": true
+      },
+      "ult_tier1": {
+        "label": "Ultimate Tier 1",
+        "type": "ult",
+        "tier": 1,
+        "ultBonusDmgPct": 10
+      },
+      "ult_tier2": {
+        "label": "Ultimate Tier 2",
+        "type": "ult",
+        "tier": 2,
+        "ultBonusDmgPct": 20
+      },
+      "ult_tier3": {
+        "label": "Ultimate Tier 3",
+        "type": "ult",
+        "tier": 3,
+        "ultBonusDmgPct": 35
+      },
+      "stat_hp_1": {
+        "label": "HP Boost I",
+        "type": "stat_hp",
+        "tier": 1,
+        "hpBonusPct": 10
+      },
+      "stat_hp_2": {
+        "label": "HP Boost II",
+        "type": "stat_hp",
+        "tier": 2,
+        "hpBonusPct": 20
+      },
+      "stat_armor_1": {
+        "label": "Armor Boost I",
+        "type": "stat_armor",
+        "tier": 1,
+        "armorBonusPct": 10
+      },
+      "stat_armor_2": {
+        "label": "Armor Boost II",
+        "type": "stat_armor",
+        "tier": 2,
+        "armorBonusPct": 20
+      },
+      "stat_speed_1": {
+        "label": "Speed Boost I",
+        "type": "stat_speed",
+        "tier": 1,
+        "speedBonusPct": 10
+      },
+      "stat_energy_1": {
+        "label": "Energy Cap Boost I",
+        "type": "stat_energy",
+        "tier": 1,
+        "energyCapBonusPct": 15
+      },
+      "stat_regen_1": {
+        "label": "Energy Regen Boost I",
+        "type": "stat_regen",
+        "tier": 1,
+        "regenBonusPct": 20
+      }
+    },
+    "prerequisites": {
+      "primary_dmg_2": "primary_dmg_1",
+      "primary_dmg_3": "primary_dmg_2",
+      "primary_dmg_4": "primary_dmg_3",
+      "primary_dmg_5": "primary_dmg_4",
+      "primary_cost_2": "primary_cost_1",
+      "primary_cd_2": "primary_cd_1",
+      "ult_tier2": "ult_tier1",
+      "ult_tier3": "ult_tier2",
+      "stat_hp_2": "stat_hp_1",
+      "stat_armor_2": "stat_armor_1"
+    }
+  },
+  "breeds": {
+    "kauai_001": {
+      "breedId": "kauai_001",
+      "name": "Nā Pali Glider",
+      "primaryClass": "Air",
+      "area": "Kauai",
+      "rarity": "rare",
+      "description": "A swift aerial breed that soars along Kauaʻi's dramatic cliffs.",
+      "spawnInfo": "Found on Nā Pali Coast trail heads and clifftop lookouts.",
+      "baseStats": {
+        "hp": 85,
+        "armor": 40,
+        "energyCap": 120,
+        "energyRegen": 18,
+        "speed": 95
+      },
+      "primaryAbility": {
+        "name": "Cliff Draft",
+        "description": "Channels updraft energy to slash at a target, knocking them back.",
+        "damage": 38,
+        "energyCost": 30,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Pali Storm",
+        "description": "Summons a localized cliff-wind storm dealing heavy area damage.",
+        "damage": 110,
+        "energyCost": 80,
+        "cooldown": 45,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "NPGLIDER_01"
+    },
+    "kauai_002": {
+      "breedId": "kauai_002",
+      "name": "Waimea Drifter",
+      "primaryClass": "Air",
+      "area": "Kauai",
+      "rarity": "uncommon",
+      "description": "Rides the canyon thermals above Waimea Canyon.",
+      "spawnInfo": "Canyon rim lookouts at dusk.",
+      "baseStats": {
+        "hp": 80,
+        "armor": 35,
+        "energyCap": 110,
+        "energyRegen": 20,
+        "speed": 100
+      },
+      "primaryAbility": {
+        "name": "Canyon Gust",
+        "description": "Sends a focused gust that slows and disorients the target.",
+        "damage": 28,
+        "energyCost": 25,
+        "cooldown": 5
+      },
+      "ultimateAbility": {
+        "name": "Thermal Tornado",
+        "description": "Creates a swirling vortex that pulls in nearby enemies.",
+        "damage": 90,
+        "energyCost": 75,
+        "cooldown": 50,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "WMDRIFTER_02"
+    },
+    "kauai_003": {
+      "breedId": "kauai_003",
+      "name": "Hanalei Skimmer",
+      "primaryClass": "Air",
+      "area": "Kauai",
+      "rarity": "common",
+      "description": "A nimble breed that skims over Hanalei taro fields.",
+      "spawnInfo": "Hanalei Valley rice paddies.",
+      "baseStats": {
+        "hp": 75,
+        "armor": 30,
+        "energyCap": 100,
+        "energyRegen": 22,
+        "speed": 105
+      },
+      "primaryAbility": {
+        "name": "Taro Wind",
+        "description": "A quick wind slash that hits all enemies in a line.",
+        "damage": 22,
+        "energyCost": 20,
+        "cooldown": 4
+      },
+      "ultimateAbility": {
+        "name": "Valley Sweep",
+        "description": "Sweeps across the field dealing damage to all visible enemies.",
+        "damage": 75,
+        "energyCost": 65,
+        "cooldown": 55,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "HNLSKIMMER_03"
+    },
+    "kauai_004": {
+      "breedId": "kauai_004",
+      "name": "Poʻipū Shoreguard",
+      "primaryClass": "Ocean",
+      "area": "Kauai",
+      "rarity": "common",
+      "description": "A sturdy ocean breed that patrols Poʻipū beach.",
+      "spawnInfo": "Southern Kauaʻi shoreline reefs.",
+      "baseStats": {
+        "hp": 100,
+        "armor": 55,
+        "energyCap": 90,
+        "energyRegen": 14,
+        "speed": 70
+      },
+      "primaryAbility": {
+        "name": "Reef Surge",
+        "description": "Launches a surge of reef water at the enemy, slowing them.",
+        "damage": 30,
+        "energyCost": 28,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Tidal Fortress",
+        "description": "Raises a tidal barrier that absorbs damage for the team.",
+        "damage": 0,
+        "energyCost": 70,
+        "cooldown": 60,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "PPSHORE_04"
+    },
+    "kauai_005": {
+      "breedId": "kauai_005",
+      "name": "Kīlauea Reef Dancer",
+      "primaryClass": "Ocean",
+      "area": "Kauai",
+      "rarity": "uncommon",
+      "description": "Dances through reef currents near the Kīlauea lighthouse.",
+      "spawnInfo": "Kīlauea Point marine refuge.",
+      "baseStats": {
+        "hp": 90,
+        "armor": 48,
+        "energyCap": 95,
+        "energyRegen": 16,
+        "speed": 80
+      },
+      "primaryAbility": {
+        "name": "Lighthouse Spray",
+        "description": "A spinning water slash that hits all adjacent foes.",
+        "damage": 35,
+        "energyCost": 32,
+        "cooldown": 7
+      },
+      "ultimateAbility": {
+        "name": "Reef Vortex",
+        "description": "Opens an oceanic vortex that traps and damages enemies.",
+        "damage": 100,
+        "energyCost": 80,
+        "cooldown": 55,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "KLRDANCER_05"
+    },
+    "kauai_006": {
+      "breedId": "kauai_006",
+      "name": "Nāwiliwili Harbor Diver",
+      "primaryClass": "Ocean",
+      "area": "Kauai",
+      "rarity": "rare",
+      "description": "Masters the deep channels of Nāwiliwili harbor.",
+      "spawnInfo": "Harbor piers at low tide.",
+      "baseStats": {
+        "hp": 95,
+        "armor": 50,
+        "energyCap": 100,
+        "energyRegen": 15,
+        "speed": 75
+      },
+      "primaryAbility": {
+        "name": "Harbor Dive",
+        "description": "Dives into water to dodge and strike from below.",
+        "damage": 42,
+        "energyCost": 35,
+        "cooldown": 8
+      },
+      "ultimateAbility": {
+        "name": "Depth Charge",
+        "description": "Releases a devastating underwater explosion.",
+        "damage": 130,
+        "energyCost": 90,
+        "cooldown": 60,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "NWHARBOR_06"
+    },
+    "kauai_007": {
+      "breedId": "kauai_007",
+      "name": "Kōkeʻe Mountainbird",
+      "primaryClass": "Ground",
+      "area": "Kauai",
+      "rarity": "uncommon",
+      "description": "Roams Kōkeʻe State Park's forested highlands.",
+      "spawnInfo": "Kōkeʻe park forest trails.",
+      "baseStats": {
+        "hp": 110,
+        "armor": 60,
+        "energyCap": 85,
+        "energyRegen": 12,
+        "speed": 65
+      },
+      "primaryAbility": {
+        "name": "Forest Stomp",
+        "description": "A ground-shaking stomp that stuns nearby enemies.",
+        "damage": 32,
+        "energyCost": 30,
+        "cooldown": 7
+      },
+      "ultimateAbility": {
+        "name": "Kōkeʻe Earthquake",
+        "description": "Triggers a localized quake dealing heavy ground damage.",
+        "damage": 115,
+        "energyCost": 85,
+        "cooldown": 55,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "KKBIRD_07"
+    },
+    "kauai_008": {
+      "breedId": "kauai_008",
+      "name": "Līhuʻe Ironfoot",
+      "primaryClass": "Ground",
+      "area": "Kauai",
+      "rarity": "common",
+      "description": "A heavy Ground breed native to the Līhuʻe plains.",
+      "spawnInfo": "Līhuʻe flatlands near sugarcane fields.",
+      "baseStats": {
+        "hp": 115,
+        "armor": 65,
+        "energyCap": 80,
+        "energyRegen": 10,
+        "speed": 55
+      },
+      "primaryAbility": {
+        "name": "Iron Kick",
+        "description": "A powerful kick that deals heavy physical damage.",
+        "damage": 36,
+        "energyCost": 28,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Cane Crush",
+        "description": "Slams with full body weight, shattering armor temporarily.",
+        "damage": 120,
+        "energyCost": 80,
+        "cooldown": 50,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "LHIRONFT_08"
+    },
+    "kauai_009": {
+      "breedId": "kauai_009",
+      "name": "Princeville Grazer",
+      "primaryClass": "Ground",
+      "area": "Kauai",
+      "rarity": "common",
+      "description": "A peaceful yet fierce breed from Princeville plateau.",
+      "spawnInfo": "Princeville resort highlands.",
+      "baseStats": {
+        "hp": 105,
+        "armor": 55,
+        "energyCap": 88,
+        "energyRegen": 13,
+        "speed": 68
+      },
+      "primaryAbility": {
+        "name": "Plateau Rush",
+        "description": "Charges forward dealing damage and pushing the target back.",
+        "damage": 30,
+        "energyCost": 25,
+        "cooldown": 5
+      },
+      "ultimateAbility": {
+        "name": "Bluff Collapse",
+        "description": "Causes the ground to collapse under multiple enemies.",
+        "damage": 100,
+        "energyCost": 78,
+        "cooldown": 52,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "PVGRAZER_09"
+    },
+    "kauai_010": {
+      "breedId": "kauai_010",
+      "name": "Māhāʻulepū Trackrunner",
+      "primaryClass": "Ground",
+      "area": "Kauai",
+      "rarity": "rare",
+      "description": "Lightning-fast ground runner from eastern Kauaʻi.",
+      "spawnInfo": "Māhāʻulepū Heritage Trail.",
+      "baseStats": {
+        "hp": 95,
+        "armor": 45,
+        "energyCap": 95,
+        "energyRegen": 16,
+        "speed": 90
+      },
+      "primaryAbility": {
+        "name": "Track Sprint",
+        "description": "Bursts forward at extreme speed, trampling the first enemy.",
+        "damage": 40,
+        "energyCost": 32,
+        "cooldown": 7
+      },
+      "ultimateAbility": {
+        "name": "Heritage Blitz",
+        "description": "Sprints through the entire battlefield dealing damage to all.",
+        "damage": 105,
+        "energyCost": 82,
+        "cooldown": 55,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "MHTRACE_10"
+    },
+    "oahu_001": {
+      "breedId": "oahu_001",
+      "name": "Waikīkī Sunstriker",
+      "primaryClass": "Air",
+      "area": "Oahu",
+      "rarity": "common",
+      "description": "Channels the blazing Honolulu sun into aerial strikes.",
+      "spawnInfo": "Waikīkī Beach boardwalk at midday.",
+      "baseStats": {
+        "hp": 78,
+        "armor": 32,
+        "energyCap": 115,
+        "energyRegen": 20,
+        "speed": 98
+      },
+      "primaryAbility": {
+        "name": "Sunstroke Dive",
+        "description": "Dives from above with solar energy, burning the target.",
+        "damage": 33,
+        "energyCost": 28,
+        "cooldown": 5
+      },
+      "ultimateAbility": {
+        "name": "Waikīkī Flare",
+        "description": "Releases a blinding solar burst, stunning all nearby foes.",
+        "damage": 95,
+        "energyCost": 75,
+        "cooldown": 50,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "WKSUN_11"
+    },
+    "oahu_002": {
+      "breedId": "oahu_002",
+      "name": "Diamond Head Sentinel",
+      "primaryClass": "Air",
+      "area": "Oahu",
+      "rarity": "rare",
+      "description": "Patrols the volcanic crater rim of Diamond Head.",
+      "spawnInfo": "Diamond Head crater hiking trail summit.",
+      "baseStats": {
+        "hp": 82,
+        "armor": 38,
+        "energyCap": 118,
+        "energyRegen": 19,
+        "speed": 92
+      },
+      "primaryAbility": {
+        "name": "Crater Wind",
+        "description": "Channels volcanic wind into a sharp projectile.",
+        "damage": 40,
+        "energyCost": 30,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Diamond Gale",
+        "description": "Unleashes a massive volcano-wind storm over a wide area.",
+        "damage": 115,
+        "energyCost": 85,
+        "cooldown": 50,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "DHSENT_12"
+    },
+    "oahu_003": {
+      "breedId": "oahu_003",
+      "name": "Mānoa Rainrider",
+      "primaryClass": "Air",
+      "area": "Oahu",
+      "rarity": "uncommon",
+      "description": "Thrives in the perpetual rain of Mānoa Valley.",
+      "spawnInfo": "Mānoa Falls trail.",
+      "baseStats": {
+        "hp": 77,
+        "armor": 34,
+        "energyCap": 112,
+        "energyRegen": 21,
+        "speed": 97
+      },
+      "primaryAbility": {
+        "name": "Rain Slash",
+        "description": "Uses rain-infused wings to slice at the target.",
+        "damage": 29,
+        "energyCost": 24,
+        "cooldown": 4
+      },
+      "ultimateAbility": {
+        "name": "Valley Downpour",
+        "description": "Calls a torrential rain that damages and slows all enemies.",
+        "damage": 88,
+        "energyCost": 70,
+        "cooldown": 52,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "MNRAIN_13"
+    },
+    "oahu_004": {
+      "breedId": "oahu_004",
+      "name": "Kapolei Dustwalker",
+      "primaryClass": "Ground",
+      "area": "Oahu",
+      "rarity": "common",
+      "description": "Tough and durable, bred in the dry western plains of Kapolei.",
+      "spawnInfo": "Kapolei plains and industrial outskirts.",
+      "baseStats": {
+        "hp": 118,
+        "armor": 68,
+        "energyCap": 78,
+        "energyRegen": 10,
+        "speed": 55
+      },
+      "primaryAbility": {
+        "name": "Dust Slam",
+        "description": "Slams the ground creating a blinding dust cloud.",
+        "damage": 30,
+        "energyCost": 25,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "West Side Quake",
+        "description": "Triggers a powerful ground tremor across the battlefield.",
+        "damage": 108,
+        "energyCost": 80,
+        "cooldown": 55,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "KPLDUST_14"
+    },
+    "oahu_005": {
+      "breedId": "oahu_005",
+      "name": "Chinatown Scrapper",
+      "primaryClass": "Ground",
+      "area": "Oahu",
+      "rarity": "common",
+      "description": "Street-smart and quick, hailing from Honolulu's Chinatown.",
+      "spawnInfo": "Chinatown alleys and markets.",
+      "baseStats": {
+        "hp": 108,
+        "armor": 58,
+        "energyCap": 90,
+        "energyRegen": 14,
+        "speed": 72
+      },
+      "primaryAbility": {
+        "name": "Street Jab",
+        "description": "A rapid combo of jabs that hits multiple times.",
+        "damage": 26,
+        "energyCost": 22,
+        "cooldown": 4
+      },
+      "ultimateAbility": {
+        "name": "Market Riot",
+        "description": "Goes into a frenzy striking all nearby enemies rapidly.",
+        "damage": 98,
+        "energyCost": 78,
+        "cooldown": 48,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "CTSCRP_15"
+    },
+    "oahu_006": {
+      "breedId": "oahu_006",
+      "name": "Kailua Tidecrusher",
+      "primaryClass": "Ocean",
+      "area": "Oahu",
+      "rarity": "uncommon",
+      "description": "Commands the windward tides of Kailua Bay.",
+      "spawnInfo": "Kailua Beach shoreline.",
+      "baseStats": {
+        "hp": 98,
+        "armor": 52,
+        "energyCap": 92,
+        "energyRegen": 15,
+        "speed": 74
+      },
+      "primaryAbility": {
+        "name": "Bay Slam",
+        "description": "Crushes the target with a powerful wave from Kailua Bay.",
+        "damage": 38,
+        "energyCost": 30,
+        "cooldown": 7
+      },
+      "ultimateAbility": {
+        "name": "Windward Tide",
+        "description": "Unleashes a windward tidal surge across all enemies.",
+        "damage": 108,
+        "energyCost": 82,
+        "cooldown": 58,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "KLTIDE_16"
+    },
+    "oahu_007": {
+      "breedId": "oahu_007",
+      "name": "Pali Rockback",
+      "primaryClass": "Ground",
+      "area": "Oahu",
+      "rarity": "uncommon",
+      "description": "A heavily armored breed living on the rocky Nuʻuanu Pali cliffs.",
+      "spawnInfo": "Nuʻuanu Pali Lookout rock faces.",
+      "baseStats": {
+        "hp": 125,
+        "armor": 72,
+        "energyCap": 75,
+        "energyRegen": 9,
+        "speed": 50
+      },
+      "primaryAbility": {
+        "name": "Rock Backfist",
+        "description": "Smashes a boulder into the enemy reducing their armor.",
+        "damage": 35,
+        "energyCost": 28,
+        "cooldown": 7
+      },
+      "ultimateAbility": {
+        "name": "Pali Avalanche",
+        "description": "Sends a rockslide down the cliff hitting all foes.",
+        "damage": 118,
+        "energyCost": 85,
+        "cooldown": 60,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "PLRCKBK_17"
+    },
+    "oahu_008": {
+      "breedId": "oahu_008",
+      "name": "Ewa Flatstriker",
+      "primaryClass": "Ground",
+      "area": "Oahu",
+      "rarity": "common",
+      "description": "A fast, flat-land striker from the Ewa Plains.",
+      "spawnInfo": "Ewa Beach coastal flats.",
+      "baseStats": {
+        "hp": 102,
+        "armor": 50,
+        "energyCap": 88,
+        "energyRegen": 15,
+        "speed": 82
+      },
+      "primaryAbility": {
+        "name": "Flat Dash",
+        "description": "Sprints low to the ground and delivers a powerful shoulder check.",
+        "damage": 32,
+        "energyCost": 26,
+        "cooldown": 5
+      },
+      "ultimateAbility": {
+        "name": "Ewa Bulldoze",
+        "description": "Charges the full length of the field trampling all enemies.",
+        "damage": 105,
+        "energyCost": 80,
+        "cooldown": 52,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "EWAFLT_18"
+    },
+    "oahu_009": {
+      "breedId": "oahu_009",
+      "name": "Mililani Hillrunner",
+      "primaryClass": "Ground",
+      "area": "Oahu",
+      "rarity": "common",
+      "description": "An agile uphill runner bred in Mililani.",
+      "spawnInfo": "Mililani Mauka trails.",
+      "baseStats": {
+        "hp": 100,
+        "armor": 48,
+        "energyCap": 92,
+        "energyRegen": 16,
+        "speed": 85
+      },
+      "primaryAbility": {
+        "name": "Hill Charge",
+        "description": "Charges uphill and delivers a gravity-powered headbutt.",
+        "damage": 31,
+        "energyCost": 24,
+        "cooldown": 5
+      },
+      "ultimateAbility": {
+        "name": "Mauka Surge",
+        "description": "Launches itself off a hillcrest hitting a wide area.",
+        "damage": 100,
+        "energyCost": 76,
+        "cooldown": 50,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "MLHILLR_19"
+    },
+    "oahu_010": {
+      "breedId": "oahu_010",
+      "name": "Downtown Brawler",
+      "primaryClass": "Ground",
+      "area": "Oahu",
+      "rarity": "rare",
+      "description": "A legendary street fighter from Downtown Honolulu.",
+      "spawnInfo": "Downtown Honolulu business district.",
+      "baseStats": {
+        "hp": 112,
+        "armor": 62,
+        "energyCap": 95,
+        "energyRegen": 14,
+        "speed": 75
+      },
+      "primaryAbility": {
+        "name": "Urban Uppercut",
+        "description": "Delivers a devastating uppercut with street-trained power.",
+        "damage": 44,
+        "energyCost": 35,
+        "cooldown": 7
+      },
+      "ultimateAbility": {
+        "name": "City Block Breaker",
+        "description": "A ground-shattering move that breaks through all defenses.",
+        "damage": 125,
+        "energyCost": 92,
+        "cooldown": 58,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "DTBRAWL_20"
+    },
+    "maui_001": {
+      "breedId": "maui_001",
+      "name": "Haleakalā Sundiver",
+      "primaryClass": "Air",
+      "area": "Maui",
+      "rarity": "legendary",
+      "description": "Soars above the world's highest dormant volcano crater.",
+      "spawnInfo": "Haleakalā summit at sunrise — extremely rare.",
+      "baseStats": {
+        "hp": 90,
+        "armor": 42,
+        "energyCap": 130,
+        "energyRegen": 22,
+        "speed": 108
+      },
+      "primaryAbility": {
+        "name": "Summit Strike",
+        "description": "Plunges from the summit with crushing aerial force.",
+        "damage": 48,
+        "energyCost": 35,
+        "cooldown": 7
+      },
+      "ultimateAbility": {
+        "name": "Crater Shockwave",
+        "description": "Releases a volcanic shockwave from above across the arena.",
+        "damage": 145,
+        "energyCost": 100,
+        "cooldown": 60,
+        "levelRequired": 45
+      },
+      "uniqueModifierTag": "HKSUN_21"
+    },
+    "maui_002": {
+      "breedId": "maui_002",
+      "name": "Kaʻanapali Wingdancer",
+      "primaryClass": "Air",
+      "area": "Maui",
+      "rarity": "uncommon",
+      "description": "Dances through the ocean breezes of Kaʻanapali.",
+      "spawnInfo": "Kaʻanapali Beach resort strip.",
+      "baseStats": {
+        "hp": 80,
+        "armor": 36,
+        "energyCap": 115,
+        "energyRegen": 19,
+        "speed": 100
+      },
+      "primaryAbility": {
+        "name": "Sunset Slash",
+        "description": "Slashes with wind-infused wings at sunset speed.",
+        "damage": 30,
+        "energyCost": 26,
+        "cooldown": 5
+      },
+      "ultimateAbility": {
+        "name": "Kaʻanapali Gale",
+        "description": "Creates a resort-wide gale that pushes back all enemies.",
+        "damage": 92,
+        "energyCost": 72,
+        "cooldown": 50,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "KPWING_22"
+    },
+    "maui_003": {
+      "breedId": "maui_003",
+      "name": "Pāʻia Tradewind",
+      "primaryClass": "Air",
+      "area": "Maui",
+      "rarity": "common",
+      "description": "A fast breed riding Maui's famous trade winds.",
+      "spawnInfo": "Pāʻia town and Ho'okipa Beach.",
+      "baseStats": {
+        "hp": 76,
+        "armor": 31,
+        "energyCap": 108,
+        "energyRegen": 21,
+        "speed": 103
+      },
+      "primaryAbility": {
+        "name": "Trade Slash",
+        "description": "Rides a trade wind gust to slash enemies at high speed.",
+        "damage": 27,
+        "energyCost": 22,
+        "cooldown": 4
+      },
+      "ultimateAbility": {
+        "name": "Hookipa Blast",
+        "description": "Channels legendary Ho'okipa winds into a powerful wave.",
+        "damage": 85,
+        "energyCost": 68,
+        "cooldown": 48,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "PIATRADE_23"
+    },
+    "maui_004": {
+      "breedId": "maui_004",
+      "name": "Lahaina Tideguard",
+      "primaryClass": "Ocean",
+      "area": "Maui",
+      "rarity": "rare",
+      "description": "Defends the historic Lahaina harbor and reef.",
+      "spawnInfo": "Lahaina Harbor and Front Street reef.",
+      "baseStats": {
+        "hp": 102,
+        "armor": 56,
+        "energyCap": 96,
+        "energyRegen": 14,
+        "speed": 72
+      },
+      "primaryAbility": {
+        "name": "Harbor Shield",
+        "description": "Creates a water barrier that absorbs incoming damage.",
+        "damage": 0,
+        "energyCost": 28,
+        "cooldown": 10
+      },
+      "ultimateAbility": {
+        "name": "Lahaina Tsunami",
+        "description": "A mighty tidal surge that sweeps all enemies off their feet.",
+        "damage": 125,
+        "energyCost": 92,
+        "cooldown": 60,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "LHTIDE_24"
+    },
+    "maui_005": {
+      "breedId": "maui_005",
+      "name": "Māʻalaea Reefstrider",
+      "primaryClass": "Ocean",
+      "area": "Maui",
+      "rarity": "uncommon",
+      "description": "Strides through the Māʻalaea reef at incredible speed.",
+      "spawnInfo": "Māʻalaea Harbor reef flats.",
+      "baseStats": {
+        "hp": 92,
+        "armor": 47,
+        "energyCap": 98,
+        "energyRegen": 16,
+        "speed": 82
+      },
+      "primaryAbility": {
+        "name": "Reef Sprint",
+        "description": "Sprints through water dealing damage in a straight line.",
+        "damage": 35,
+        "energyCost": 29,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Reef Obliterator",
+        "description": "Charges at full speed demolishing reef and enemy alike.",
+        "damage": 110,
+        "energyCost": 85,
+        "cooldown": 55,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "MARLSTRD_25"
+    },
+    "maui_006": {
+      "breedId": "maui_006",
+      "name": "Upcountry Trailblazer",
+      "primaryClass": "Ground",
+      "area": "Maui",
+      "rarity": "uncommon",
+      "description": "Blazes through Maui upcountry farms and ranches.",
+      "spawnInfo": "Kula and Makawao upcountry.",
+      "baseStats": {
+        "hp": 110,
+        "armor": 58,
+        "energyCap": 88,
+        "energyRegen": 13,
+        "speed": 70
+      },
+      "primaryAbility": {
+        "name": "Ranch Charge",
+        "description": "A powerful ranch-style charge that deals heavy impact damage.",
+        "damage": 36,
+        "energyCost": 30,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Paniolo Stampede",
+        "description": "Stampedes through the battlefield trampling all in its path.",
+        "damage": 115,
+        "energyCost": 85,
+        "cooldown": 56,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "UCTRAIL_26"
+    },
+    "maui_007": {
+      "breedId": "maui_007",
+      "name": "Wailuku Stoneback",
+      "primaryClass": "Ground",
+      "area": "Maui",
+      "rarity": "common",
+      "description": "Tank-like breed from the lava rock fields of Wailuku.",
+      "spawnInfo": "Wailuku town and Iao Valley.",
+      "baseStats": {
+        "hp": 122,
+        "armor": 70,
+        "energyCap": 80,
+        "energyRegen": 10,
+        "speed": 52
+      },
+      "primaryAbility": {
+        "name": "Lava Stomp",
+        "description": "Slams the ground with lava-heated feet, burning enemies.",
+        "damage": 33,
+        "energyCost": 27,
+        "cooldown": 7
+      },
+      "ultimateAbility": {
+        "name": "Iao Landslide",
+        "description": "Triggers a valley landslide burying all enemies in rubble.",
+        "damage": 112,
+        "energyCost": 82,
+        "cooldown": 58,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "WLKSTONE_27"
+    },
+    "maui_008": {
+      "breedId": "maui_008",
+      "name": "Kīhei Sandslicer",
+      "primaryClass": "Ground",
+      "area": "Maui",
+      "rarity": "common",
+      "description": "A quick coastal ground breed from Kīhei.",
+      "spawnInfo": "Kīhei beach parks.",
+      "baseStats": {
+        "hp": 98,
+        "armor": 48,
+        "energyCap": 90,
+        "energyRegen": 15,
+        "speed": 83
+      },
+      "primaryAbility": {
+        "name": "Sand Slash",
+        "description": "Kicks up sand and slashes enemies, reducing their accuracy.",
+        "damage": 29,
+        "energyCost": 23,
+        "cooldown": 5
+      },
+      "ultimateAbility": {
+        "name": "South Maui Sandstorm",
+        "description": "Creates a sandstorm that damages and blinds all enemies.",
+        "damage": 98,
+        "energyCost": 76,
+        "cooldown": 52,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "KHSAND_28"
+    },
+    "maui_009": {
+      "breedId": "maui_009",
+      "name": "Kaupō Trailcrusher",
+      "primaryClass": "Ground",
+      "area": "Maui",
+      "rarity": "rare",
+      "description": "A rare heavyweight from the remote Kaupō trail.",
+      "spawnInfo": "Kaupō Gap — far eastern Maui.",
+      "baseStats": {
+        "hp": 128,
+        "armor": 75,
+        "energyCap": 82,
+        "energyRegen": 11,
+        "speed": 48
+      },
+      "primaryAbility": {
+        "name": "Remote Slam",
+        "description": "An earth-shaking slam powered by isolation and raw strength.",
+        "damage": 44,
+        "energyCost": 35,
+        "cooldown": 8
+      },
+      "ultimateAbility": {
+        "name": "Gap Crusher",
+        "description": "Cracks the ground sending shockwaves in all directions.",
+        "damage": 128,
+        "energyCost": 90,
+        "cooldown": 62,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "KPTRAIL_29"
+    },
+    "maui_010": {
+      "breedId": "maui_010",
+      "name": "Hāna Rainforest Stalker",
+      "primaryClass": "Ground",
+      "area": "Maui",
+      "rarity": "uncommon",
+      "description": "Stalks quietly through the dense Hāna rainforest.",
+      "spawnInfo": "Road to Hāna jungle — rare encounter.",
+      "baseStats": {
+        "hp": 105,
+        "armor": 55,
+        "energyCap": 92,
+        "energyRegen": 14,
+        "speed": 74
+      },
+      "primaryAbility": {
+        "name": "Jungle Ambush",
+        "description": "Leaps from cover dealing a surprise ambush strike.",
+        "damage": 40,
+        "energyCost": 32,
+        "cooldown": 7
+      },
+      "ultimateAbility": {
+        "name": "Hāna Overgrowth",
+        "description": "Summons entangling jungle vines to immobilize all enemies.",
+        "damage": 88,
+        "energyCost": 78,
+        "cooldown": 55,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "HNRAIN_30"
+    },
+    "molokai_001": {
+      "breedId": "molokai_001",
+      "name": "Kalaupapa Cliffdiver",
+      "primaryClass": "Air",
+      "area": "Molokai",
+      "rarity": "rare",
+      "description": "Fearlessly dives the world's tallest sea cliffs at Kalaupapa.",
+      "spawnInfo": "Kalaupapa National Historical Park.",
+      "baseStats": {
+        "hp": 83,
+        "armor": 38,
+        "energyCap": 122,
+        "energyRegen": 20,
+        "speed": 102
+      },
+      "primaryAbility": {
+        "name": "Pali Plunge",
+        "description": "Dives off the sea cliffs for a devastating dive attack.",
+        "damage": 45,
+        "energyCost": 34,
+        "cooldown": 7
+      },
+      "ultimateAbility": {
+        "name": "Kalaupapa Dive Bomb",
+        "description": "An aerial bomb drop from maximum height.",
+        "damage": 132,
+        "energyCost": 95,
+        "cooldown": 60,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "KLPCLIFF_31"
+    },
+    "molokai_002": {
+      "breedId": "molokai_002",
+      "name": "Halawa Valleybird",
+      "primaryClass": "Air",
+      "area": "Molokai",
+      "rarity": "uncommon",
+      "description": "Soars above the ancient taro farms of Halawa Valley.",
+      "spawnInfo": "Halawa Valley floor.",
+      "baseStats": {
+        "hp": 78,
+        "armor": 33,
+        "energyCap": 112,
+        "energyRegen": 19,
+        "speed": 99
+      },
+      "primaryAbility": {
+        "name": "Valley Updraft",
+        "description": "Catches a valley updraft for a rapid strike.",
+        "damage": 28,
+        "energyCost": 23,
+        "cooldown": 5
+      },
+      "ultimateAbility": {
+        "name": "Ancient Wind",
+        "description": "Calls upon ancient valley winds to scatter all enemies.",
+        "damage": 90,
+        "energyCost": 72,
+        "cooldown": 50,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "HLWVLY_32"
+    },
+    "molokai_003": {
+      "breedId": "molokai_003",
+      "name": "Moʻomomi Beachflier",
+      "primaryClass": "Air",
+      "area": "Molokai",
+      "rarity": "common",
+      "description": "Skims above the pristine Moʻomomi dunes.",
+      "spawnInfo": "Moʻomomi Beach dunes.",
+      "baseStats": {
+        "hp": 74,
+        "armor": 29,
+        "energyCap": 105,
+        "energyRegen": 21,
+        "speed": 104
+      },
+      "primaryAbility": {
+        "name": "Dune Skim",
+        "description": "Skims low and fast dealing a quick dust-and-wing slash.",
+        "damage": 24,
+        "energyCost": 19,
+        "cooldown": 4
+      },
+      "ultimateAbility": {
+        "name": "Dune Storm",
+        "description": "Kicks up a massive dune storm blinding and damaging enemies.",
+        "damage": 82,
+        "energyCost": 65,
+        "cooldown": 48,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "MMBEACH_33"
+    },
+    "molokai_004": {
+      "breedId": "molokai_004",
+      "name": "Pāpōhaku Shorewatcher",
+      "primaryClass": "Ocean",
+      "area": "Molokai",
+      "rarity": "uncommon",
+      "description": "Guards the longest white-sand beach in Hawaiʻi.",
+      "spawnInfo": "Pāpōhaku Beach west side.",
+      "baseStats": {
+        "hp": 94,
+        "armor": 50,
+        "energyCap": 94,
+        "energyRegen": 15,
+        "speed": 76
+      },
+      "primaryAbility": {
+        "name": "Shore Surge",
+        "description": "Sends a powerful shore wave crashing into the enemy.",
+        "damage": 34,
+        "energyCost": 28,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Long Beach Deluge",
+        "description": "Floods the entire battlefield with ocean water.",
+        "damage": 105,
+        "energyCost": 82,
+        "cooldown": 58,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "PPSHORE_34"
+    },
+    "molokai_005": {
+      "breedId": "molokai_005",
+      "name": "East Molokaʻi Reefhunter",
+      "primaryClass": "Ocean",
+      "area": "Molokai",
+      "rarity": "common",
+      "description": "Hunts through the reef ecosystem of east Molokaʻi.",
+      "spawnInfo": "East Molokaʻi reef.",
+      "baseStats": {
+        "hp": 88,
+        "armor": 45,
+        "energyCap": 90,
+        "energyRegen": 14,
+        "speed": 78
+      },
+      "primaryAbility": {
+        "name": "Reef Hunt",
+        "description": "Stalks and strikes from the reef with pinpoint accuracy.",
+        "damage": 31,
+        "energyCost": 26,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Reef Ambush",
+        "description": "Erupts from underwater striking all surface targets.",
+        "damage": 100,
+        "energyCost": 78,
+        "cooldown": 55,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "EMREEF_35"
+    },
+    "molokai_006": {
+      "breedId": "molokai_006",
+      "name": "Kaunakakai Dockthumper",
+      "primaryClass": "Ground",
+      "area": "Molokai",
+      "rarity": "common",
+      "description": "A stocky brawler from Kaunakakai harbor.",
+      "spawnInfo": "Kaunakakai Wharf.",
+      "baseStats": {
+        "hp": 112,
+        "armor": 62,
+        "energyCap": 82,
+        "energyRegen": 11,
+        "speed": 58
+      },
+      "primaryAbility": {
+        "name": "Dock Thump",
+        "description": "Thumps the dock planks causing shockwaves underfoot.",
+        "damage": 31,
+        "energyCost": 25,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Wharf Demolisher",
+        "description": "Tears up the dock and hurls debris at all enemies.",
+        "damage": 105,
+        "energyCost": 80,
+        "cooldown": 55,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "KKDOCK_36"
+    },
+    "molokai_007": {
+      "breedId": "molokai_007",
+      "name": "Maunaloa Plateau Stomper",
+      "primaryClass": "Ground",
+      "area": "Molokai",
+      "rarity": "rare",
+      "description": "A heavy stomper from the Maunaloa plateau in western Molokaʻi.",
+      "spawnInfo": "Maunaloa town plateau.",
+      "baseStats": {
+        "hp": 125,
+        "armor": 74,
+        "energyCap": 78,
+        "energyRegen": 9,
+        "speed": 46
+      },
+      "primaryAbility": {
+        "name": "Plateau Pound",
+        "description": "Pounds the plateau floor with seismic force.",
+        "damage": 42,
+        "energyCost": 33,
+        "cooldown": 8
+      },
+      "ultimateAbility": {
+        "name": "Maunaloa Tremor",
+        "description": "Causes a deep tremor that shakes the entire arena.",
+        "damage": 120,
+        "energyCost": 88,
+        "cooldown": 62,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "MLSTOMP_37"
+    },
+    "molokai_008": {
+      "breedId": "molokai_008",
+      "name": "Central Molokaʻi Fieldrunner",
+      "primaryClass": "Ground",
+      "area": "Molokai",
+      "rarity": "common",
+      "description": "Runs freely across the agricultural central plains.",
+      "spawnInfo": "Central Molokaʻi farmland.",
+      "baseStats": {
+        "hp": 100,
+        "armor": 50,
+        "energyCap": 88,
+        "energyRegen": 14,
+        "speed": 80
+      },
+      "primaryAbility": {
+        "name": "Field Charge",
+        "description": "Charges across the open field at high speed.",
+        "damage": 30,
+        "energyCost": 24,
+        "cooldown": 5
+      },
+      "ultimateAbility": {
+        "name": "Harvest Rush",
+        "description": "Stampedes through the battlefield like a harvester.",
+        "damage": 100,
+        "energyCost": 76,
+        "cooldown": 50,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "CMFIELD_38"
+    },
+    "molokai_009": {
+      "breedId": "molokai_009",
+      "name": "Kalae Northpoint Brawler",
+      "primaryClass": "Ground",
+      "area": "Molokai",
+      "rarity": "uncommon",
+      "description": "Hardy north-coast fighter from Kaʻalakaʻi.",
+      "spawnInfo": "Molokaʻi north shore.",
+      "baseStats": {
+        "hp": 108,
+        "armor": 58,
+        "energyCap": 86,
+        "energyRegen": 13,
+        "speed": 68
+      },
+      "primaryAbility": {
+        "name": "North Shore Slam",
+        "description": "A raw powerful slam from north-shore tough conditioning.",
+        "damage": 36,
+        "energyCost": 29,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Northpoint Eruption",
+        "description": "A volcanic ground eruption from the north point cliffs.",
+        "damage": 110,
+        "energyCost": 82,
+        "cooldown": 56,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "KLNBRAW_39"
+    },
+    "molokai_010": {
+      "breedId": "molokai_010",
+      "name": "Fishpond Mudwrestler",
+      "primaryClass": "Ground",
+      "area": "Molokai",
+      "rarity": "uncommon",
+      "description": "Battles in the legendary Hawaiian fishponds.",
+      "spawnInfo": "Ancient Hawaiian fishponds — east coast Molokaʻi.",
+      "baseStats": {
+        "hp": 106,
+        "armor": 56,
+        "energyCap": 88,
+        "energyRegen": 13,
+        "speed": 64
+      },
+      "primaryAbility": {
+        "name": "Mud Slam",
+        "description": "Hurls a ball of fishpond mud that slows and debuffs enemies.",
+        "damage": 28,
+        "energyCost": 23,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Fishpond Flood",
+        "description": "Floods the arena with fishpond water trapping all enemies.",
+        "damage": 95,
+        "energyCost": 76,
+        "cooldown": 55,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "FPMUD_40"
+    },
+    "lanai_001": {
+      "breedId": "lanai_001",
+      "name": "Lānaʻi City Hilltop Glider",
+      "primaryClass": "Air",
+      "area": "Lanai",
+      "rarity": "uncommon",
+      "description": "Glides above the ironwood-covered hills of Lānaʻi City.",
+      "spawnInfo": "Lānaʻi City Norfolk pine groves.",
+      "baseStats": {
+        "hp": 80,
+        "armor": 35,
+        "energyCap": 114,
+        "energyRegen": 19,
+        "speed": 98
+      },
+      "primaryAbility": {
+        "name": "Ironwood Gust",
+        "description": "A gust filtered through ironwood trees that pierces armor.",
+        "damage": 32,
+        "energyCost": 27,
+        "cooldown": 5
+      },
+      "ultimateAbility": {
+        "name": "Pine Squall",
+        "description": "Launches ironwood pine needles as projectiles at all enemies.",
+        "damage": 93,
+        "energyCost": 74,
+        "cooldown": 52,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "LCHGLIDE_41"
+    },
+    "lanai_002": {
+      "breedId": "lanai_002",
+      "name": "Munro Trail Windcutter",
+      "primaryClass": "Air",
+      "area": "Lanai",
+      "rarity": "rare",
+      "description": "Cuts through mist and wind on the Munro Trail ridge.",
+      "spawnInfo": "Munro Trail highest ridge.",
+      "baseStats": {
+        "hp": 82,
+        "armor": 37,
+        "energyCap": 120,
+        "energyRegen": 20,
+        "speed": 103
+      },
+      "primaryAbility": {
+        "name": "Ridge Slash",
+        "description": "A ridge-wind slash that covers a wide arc.",
+        "damage": 38,
+        "energyCost": 31,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Munro Maelstrom",
+        "description": "Creates a ridge maelstrom that damages everyone around it.",
+        "damage": 115,
+        "energyCost": 87,
+        "cooldown": 55,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "MNROWIND_42"
+    },
+    "lanai_003": {
+      "breedId": "lanai_003",
+      "name": "Shipwreck Beach Screamer",
+      "primaryClass": "Air",
+      "area": "Lanai",
+      "rarity": "common",
+      "description": "Screams through the windy Shipwreck Beach channel.",
+      "spawnInfo": "Shipwreck Beach north coast.",
+      "baseStats": {
+        "hp": 75,
+        "armor": 30,
+        "energyCap": 106,
+        "energyRegen": 21,
+        "speed": 105
+      },
+      "primaryAbility": {
+        "name": "Channel Scream",
+        "description": "A sonic wind attack that disorients the target.",
+        "damage": 25,
+        "energyCost": 20,
+        "cooldown": 4
+      },
+      "ultimateAbility": {
+        "name": "Shipwreck Gale",
+        "description": "A ferocious channel gale that knocks back all enemies.",
+        "damage": 85,
+        "energyCost": 68,
+        "cooldown": 48,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "SWBSCREAM_43"
+    },
+    "lanai_004": {
+      "breedId": "lanai_004",
+      "name": "Hulopoʻe Bay Waveguard",
+      "primaryClass": "Ocean",
+      "area": "Lanai",
+      "rarity": "uncommon",
+      "description": "Guards the pristine snorkeling bay at Hulopoʻe.",
+      "spawnInfo": "Hulopoʻe Bay marine preserve.",
+      "baseStats": {
+        "hp": 96,
+        "armor": 52,
+        "energyCap": 96,
+        "energyRegen": 15,
+        "speed": 76
+      },
+      "primaryAbility": {
+        "name": "Bay Guard",
+        "description": "Deflects incoming attacks with a bay water shield.",
+        "damage": 0,
+        "energyCost": 26,
+        "cooldown": 9
+      },
+      "ultimateAbility": {
+        "name": "Spinner Surge",
+        "description": "Summons spinner dolphins to bombard all enemies.",
+        "damage": 110,
+        "energyCost": 84,
+        "cooldown": 58,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "HLPBAY_44"
+    },
+    "lanai_005": {
+      "breedId": "lanai_005",
+      "name": "Pōʻaiwa Reefstreak",
+      "primaryClass": "Ocean",
+      "area": "Lanai",
+      "rarity": "common",
+      "description": "Streaks through the Pōʻaiwa reef at blinding speed.",
+      "spawnInfo": "Southwest Lānaʻi reef.",
+      "baseStats": {
+        "hp": 86,
+        "armor": 44,
+        "energyCap": 92,
+        "energyRegen": 15,
+        "speed": 84
+      },
+      "primaryAbility": {
+        "name": "Reef Streak",
+        "description": "Dashes through the reef dealing slicing damage.",
+        "damage": 32,
+        "energyCost": 27,
+        "cooldown": 5
+      },
+      "ultimateAbility": {
+        "name": "Reef Storm",
+        "description": "Launches a reef-sourced current that shreds enemies.",
+        "damage": 100,
+        "energyCost": 80,
+        "cooldown": 55,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "PWREEF_45"
+    },
+    "lanai_006": {
+      "breedId": "lanai_006",
+      "name": "Garden of the Gods Stonekeeper",
+      "primaryClass": "Ground",
+      "area": "Lanai",
+      "rarity": "legendary",
+      "description": "Ancient keeper of the mysterious rock formations.",
+      "spawnInfo": "Keāhiakawelo (Garden of the Gods) — very rare.",
+      "baseStats": {
+        "hp": 135,
+        "armor": 80,
+        "energyCap": 85,
+        "energyRegen": 10,
+        "speed": 44
+      },
+      "primaryAbility": {
+        "name": "God Stone Toss",
+        "description": "Hurls a sacred rock dealing heavy physical damage.",
+        "damage": 50,
+        "energyCost": 38,
+        "cooldown": 8
+      },
+      "ultimateAbility": {
+        "name": "Divine Rockfall",
+        "description": "Calls a divine rockfall crushing all enemies on the field.",
+        "damage": 148,
+        "energyCost": 105,
+        "cooldown": 65,
+        "levelRequired": 45
+      },
+      "uniqueModifierTag": "GODSTONE_46"
+    },
+    "lanai_007": {
+      "breedId": "lanai_007",
+      "name": "Lānaʻi City Pineapple Stomper",
+      "primaryClass": "Ground",
+      "area": "Lanai",
+      "rarity": "common",
+      "description": "A sturdy worker breed from the old pineapple plantation.",
+      "spawnInfo": "Old Dole plantation fields.",
+      "baseStats": {
+        "hp": 115,
+        "armor": 63,
+        "energyCap": 82,
+        "energyRegen": 11,
+        "speed": 55
+      },
+      "primaryAbility": {
+        "name": "Plantation Stomp",
+        "description": "Stomps with agricultural power dealing heavy damage.",
+        "damage": 33,
+        "energyCost": 26,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Pineapple Crush",
+        "description": "Crushes enemies under the weight of plantation tradition.",
+        "damage": 108,
+        "energyCost": 80,
+        "cooldown": 54,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "PNSTOMP_47"
+    },
+    "lanai_008": {
+      "breedId": "lanai_008",
+      "name": "Kaumālāpau Harbor Lifter",
+      "primaryClass": "Ground",
+      "area": "Lanai",
+      "rarity": "common",
+      "description": "A powerful loader breed from the main harbor.",
+      "spawnInfo": "Kaumālāpau Harbor docks.",
+      "baseStats": {
+        "hp": 118,
+        "armor": 66,
+        "energyCap": 80,
+        "energyRegen": 10,
+        "speed": 52
+      },
+      "primaryAbility": {
+        "name": "Harbor Lift",
+        "description": "Lifts and slams the enemy with freight-handling strength.",
+        "damage": 34,
+        "energyCost": 28,
+        "cooldown": 7
+      },
+      "ultimateAbility": {
+        "name": "Cargo Drop",
+        "description": "Drops a massive virtual cargo container on the battlefield.",
+        "damage": 112,
+        "energyCost": 84,
+        "cooldown": 58,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "KMLHRB_48"
+    },
+    "lanai_009": {
+      "breedId": "lanai_009",
+      "name": "Mānele Bay Bluffcharger",
+      "primaryClass": "Ground",
+      "area": "Lanai",
+      "rarity": "uncommon",
+      "description": "Charges down the bluffs above Mānele Bay.",
+      "spawnInfo": "Mānele Bay bluff overlook.",
+      "baseStats": {
+        "hp": 108,
+        "armor": 58,
+        "energyCap": 87,
+        "energyRegen": 13,
+        "speed": 70
+      },
+      "primaryAbility": {
+        "name": "Bluff Charge",
+        "description": "Charges down the steep bluff with full momentum.",
+        "damage": 38,
+        "energyCost": 30,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Bay Blitzkrieg",
+        "description": "A full-momentum downhill charge that flattens all enemies.",
+        "damage": 112,
+        "energyCost": 83,
+        "cooldown": 55,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "MNLBLUFF_49"
+    },
+    "lanai_010": {
+      "breedId": "lanai_010",
+      "name": "Lānaʻi Highlands Trapper",
+      "primaryClass": "Ground",
+      "area": "Lanai",
+      "rarity": "rare",
+      "description": "Sets traps in the wooded highlands of Lānaʻi.",
+      "spawnInfo": "Lānaʻi highlands forest.",
+      "baseStats": {
+        "hp": 104,
+        "armor": 55,
+        "energyCap": 90,
+        "energyRegen": 14,
+        "speed": 72
+      },
+      "primaryAbility": {
+        "name": "Trap Spring",
+        "description": "Springs a concealed trap on the unsuspecting target.",
+        "damage": 42,
+        "energyCost": 33,
+        "cooldown": 8
+      },
+      "ultimateAbility": {
+        "name": "Highland Snare",
+        "description": "Spreads multiple snares, immobilizing all enemies briefly.",
+        "damage": 100,
+        "energyCost": 80,
+        "cooldown": 56,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "LNHTRAP_50"
+    },
+    "hawaii_001": {
+      "breedId": "hawaii_001",
+      "name": "Kīlauea Lavastrider",
+      "primaryClass": "Ground",
+      "area": "Hawaii",
+      "rarity": "legendary",
+      "description": "Walks across active lava flows, untouched by flame.",
+      "spawnInfo": "Kīlauea caldera rim — very rare eruption events.",
+      "baseStats": {
+        "hp": 138,
+        "armor": 82,
+        "energyCap": 88,
+        "energyRegen": 11,
+        "speed": 46
+      },
+      "primaryAbility": {
+        "name": "Lava Step",
+        "description": "Stamps a foot leaving a burning lava patch that damages enemies.",
+        "damage": 48,
+        "energyCost": 36,
+        "cooldown": 7
+      },
+      "ultimateAbility": {
+        "name": "Eruption Walk",
+        "description": "Triggers a full caldera eruption that devastates the battlefield.",
+        "damage": 155,
+        "energyCost": 108,
+        "cooldown": 70,
+        "levelRequired": 45
+      },
+      "uniqueModifierTag": "KLLAVA_51"
+    },
+    "hawaii_002": {
+      "breedId": "hawaii_002",
+      "name": "Mauna Kea Summit Keeper",
+      "primaryClass": "Ground",
+      "area": "Hawaii",
+      "rarity": "rare",
+      "description": "Endures the sub-zero summit of Mauna Kea.",
+      "spawnInfo": "Mauna Kea Observatory summit.",
+      "baseStats": {
+        "hp": 130,
+        "armor": 76,
+        "energyCap": 84,
+        "energyRegen": 10,
+        "speed": 48
+      },
+      "primaryAbility": {
+        "name": "Ice Pack Slam",
+        "description": "Slams with an icy fist formed from summit frost.",
+        "damage": 44,
+        "energyCost": 34,
+        "cooldown": 8
+      },
+      "ultimateAbility": {
+        "name": "Summit Blizzard",
+        "description": "Unleashes a blizzard from Mauna Kea's summit over all foes.",
+        "damage": 128,
+        "energyCost": 92,
+        "cooldown": 62,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "MKSUMMT_52"
+    },
+    "hawaii_003": {
+      "breedId": "hawaii_003",
+      "name": "Waipiʻo Valley Charger",
+      "primaryClass": "Ground",
+      "area": "Hawaii",
+      "rarity": "uncommon",
+      "description": "Charges through the waterfall-rich Waipiʻo Valley.",
+      "spawnInfo": "Waipiʻo Valley floor.",
+      "baseStats": {
+        "hp": 112,
+        "armor": 60,
+        "energyCap": 88,
+        "energyRegen": 13,
+        "speed": 73
+      },
+      "primaryAbility": {
+        "name": "Valley Watercharge",
+        "description": "Charges infused with valley waterfall energy.",
+        "damage": 37,
+        "energyCost": 30,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Waipiʻo Flood",
+        "description": "Channels all valley waterfalls into a devastating torrent.",
+        "damage": 115,
+        "energyCost": 85,
+        "cooldown": 57,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "WPVALLEY_53"
+    },
+    "hawaii_004": {
+      "breedId": "hawaii_004",
+      "name": "Hilo Rainstomper",
+      "primaryClass": "Ground",
+      "area": "Hawaii",
+      "rarity": "common",
+      "description": "Toughened by the constant rain of Hilo.",
+      "spawnInfo": "Hilo town and Banyan Drive.",
+      "baseStats": {
+        "hp": 115,
+        "armor": 62,
+        "energyCap": 84,
+        "energyRegen": 12,
+        "speed": 60
+      },
+      "primaryAbility": {
+        "name": "Rain Stomp",
+        "description": "Stomps the wet ground splashing all nearby enemies.",
+        "damage": 30,
+        "energyCost": 24,
+        "cooldown": 5
+      },
+      "ultimateAbility": {
+        "name": "Hilo Downpour Slam",
+        "description": "Combines Hilo rainfall with ground force for massive impact.",
+        "damage": 110,
+        "energyCost": 82,
+        "cooldown": 55,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "HLOSTMP_54"
+    },
+    "hawaii_005": {
+      "breedId": "hawaii_005",
+      "name": "Kona Coffee Duster",
+      "primaryClass": "Ground",
+      "area": "Hawaii",
+      "rarity": "common",
+      "description": "A tireless worker breed from Kona coffee farms.",
+      "spawnInfo": "Kona coffee belt.",
+      "baseStats": {
+        "hp": 104,
+        "armor": 52,
+        "energyCap": 90,
+        "energyRegen": 15,
+        "speed": 72
+      },
+      "primaryAbility": {
+        "name": "Coffee Kick",
+        "description": "A caffeinated kick that temporarily increases the user's speed.",
+        "damage": 29,
+        "energyCost": 22,
+        "cooldown": 5
+      },
+      "ultimateAbility": {
+        "name": "Kona Burst",
+        "description": "Releases a full-energy caffeine burst hitting all enemies.",
+        "damage": 100,
+        "energyCost": 78,
+        "cooldown": 52,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "KNCOFFEE_55"
+    },
+    "hawaii_006": {
+      "breedId": "hawaii_006",
+      "name": "Puna Lava Tube Dweller",
+      "primaryClass": "Ground",
+      "area": "Hawaii",
+      "rarity": "uncommon",
+      "description": "Lives in the vast lava tube networks of Puna.",
+      "spawnInfo": "Puna lava tube caves.",
+      "baseStats": {
+        "hp": 118,
+        "armor": 65,
+        "energyCap": 86,
+        "energyRegen": 12,
+        "speed": 62
+      },
+      "primaryAbility": {
+        "name": "Tube Slam",
+        "description": "Slams a foe into the ground as if pushing them into a tube.",
+        "damage": 36,
+        "energyCost": 29,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Lava Tube Collapse",
+        "description": "Collapses an underground tube sending shockwaves everywhere.",
+        "damage": 115,
+        "energyCost": 85,
+        "cooldown": 58,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "PNTUBE_56"
+    },
+    "hawaii_007": {
+      "breedId": "hawaii_007",
+      "name": "Kohala Mountain Rambler",
+      "primaryClass": "Ground",
+      "area": "Hawaii",
+      "rarity": "common",
+      "description": "Roams the ancient Kohala mountains.",
+      "spawnInfo": "Kohala Mountain Road.",
+      "baseStats": {
+        "hp": 108,
+        "armor": 57,
+        "energyCap": 87,
+        "energyRegen": 13,
+        "speed": 67
+      },
+      "primaryAbility": {
+        "name": "Mountain Ramble",
+        "description": "A wide sweeping attack like a rambling mountain creature.",
+        "damage": 32,
+        "energyCost": 25,
+        "cooldown": 5
+      },
+      "ultimateAbility": {
+        "name": "Kohala Stampede",
+        "description": "Stampedes the full width of the field.",
+        "damage": 104,
+        "energyCost": 80,
+        "cooldown": 53,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "KHLRAMB_57"
+    },
+    "hawaii_008": {
+      "breedId": "hawaii_008",
+      "name": "Kaʻū Desert Wanderer",
+      "primaryClass": "Ground",
+      "area": "Hawaii",
+      "rarity": "uncommon",
+      "description": "Survives in the barren Kāʻū desert.",
+      "spawnInfo": "Kāʻū desert south of Kīlauea.",
+      "baseStats": {
+        "hp": 110,
+        "armor": 60,
+        "energyCap": 86,
+        "energyRegen": 12,
+        "speed": 66
+      },
+      "primaryAbility": {
+        "name": "Desert Blast",
+        "description": "A hot desert wind blast that scorches the enemy.",
+        "damage": 34,
+        "energyCost": 27,
+        "cooldown": 6
+      },
+      "ultimateAbility": {
+        "name": "Kāʻū Desolation",
+        "description": "Scorches the entire battlefield with desert heat.",
+        "damage": 112,
+        "energyCost": 83,
+        "cooldown": 56,
+        "levelRequired": 15
+      },
+      "uniqueModifierTag": "KAUDESR_58"
+    },
+    "hawaii_009": {
+      "breedId": "hawaii_009",
+      "name": "Mauna Loa Ridge Hawk",
+      "primaryClass": "Air",
+      "area": "Hawaii",
+      "rarity": "rare",
+      "description": "An aerial predator circling the Mauna Loa ridgeline.",
+      "spawnInfo": "Mauna Loa trail — high altitude zones.",
+      "baseStats": {
+        "hp": 85,
+        "armor": 40,
+        "energyCap": 122,
+        "energyRegen": 20,
+        "speed": 104
+      },
+      "primaryAbility": {
+        "name": "Ridgeline Dive",
+        "description": "A hawk-like dive attack along the volcanic ridge.",
+        "damage": 43,
+        "energyCost": 33,
+        "cooldown": 7
+      },
+      "ultimateAbility": {
+        "name": "Mauna Loa Thermal",
+        "description": "Rides a volcanic thermal to unleash a high-altitude air strike.",
+        "damage": 122,
+        "energyCost": 90,
+        "cooldown": 60,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "MLHAWK_59"
+    },
+    "hawaii_010": {
+      "breedId": "hawaii_010",
+      "name": "Kealakekua Bay Sharkwhisper",
+      "primaryClass": "Ocean",
+      "area": "Hawaii",
+      "rarity": "rare",
+      "description": "Commands the sharks of Kealakekua Bay.",
+      "spawnInfo": "Kealakekua Bay marine sanctuary.",
+      "baseStats": {
+        "hp": 100,
+        "armor": 54,
+        "energyCap": 100,
+        "energyRegen": 16,
+        "speed": 80
+      },
+      "primaryAbility": {
+        "name": "Shark Call",
+        "description": "Calls a shark to assist in a coordinated attack.",
+        "damage": 45,
+        "energyCost": 35,
+        "cooldown": 8
+      },
+      "ultimateAbility": {
+        "name": "Bay Frenzy",
+        "description": "Triggers a shark frenzy that assaults all enemies repeatedly.",
+        "damage": 130,
+        "energyCost": 95,
+        "cooldown": 62,
+        "levelRequired": 30
+      },
+      "uniqueModifierTag": "KLKSHARK_60"
+    }
+  },
+  "unique_modifier_registry": {
+    "NPGLIDER_01": {
+      "assigned": true,
+      "assignedBreedId": "kauai_001",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "WMDRIFTER_02": {
+      "assigned": true,
+      "assignedBreedId": "kauai_002",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "HNLSKIMMER_03": {
+      "assigned": true,
+      "assignedBreedId": "kauai_003",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "PPSHORE_04": {
+      "assigned": true,
+      "assignedBreedId": "kauai_004",
+      "allowedClasses": [
+        "Ocean"
+      ]
+    },
+    "KLRDANCER_05": {
+      "assigned": true,
+      "assignedBreedId": "kauai_005",
+      "allowedClasses": [
+        "Ocean"
+      ]
+    },
+    "NWHARBOR_06": {
+      "assigned": true,
+      "assignedBreedId": "kauai_006",
+      "allowedClasses": [
+        "Ocean"
+      ]
+    },
+    "KKBIRD_07": {
+      "assigned": true,
+      "assignedBreedId": "kauai_007",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "LHIRONFT_08": {
+      "assigned": true,
+      "assignedBreedId": "kauai_008",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "PVGRAZER_09": {
+      "assigned": true,
+      "assignedBreedId": "kauai_009",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "MHTRACE_10": {
+      "assigned": true,
+      "assignedBreedId": "kauai_010",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "WKSUN_11": {
+      "assigned": true,
+      "assignedBreedId": "oahu_001",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "DHSENT_12": {
+      "assigned": true,
+      "assignedBreedId": "oahu_002",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "MNRAIN_13": {
+      "assigned": true,
+      "assignedBreedId": "oahu_003",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "KPLDUST_14": {
+      "assigned": true,
+      "assignedBreedId": "oahu_004",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "CTSCRP_15": {
+      "assigned": true,
+      "assignedBreedId": "oahu_005",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "KLTIDE_16": {
+      "assigned": true,
+      "assignedBreedId": "oahu_006",
+      "allowedClasses": [
+        "Ocean"
+      ]
+    },
+    "PLRCKBK_17": {
+      "assigned": true,
+      "assignedBreedId": "oahu_007",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "EWAFLT_18": {
+      "assigned": true,
+      "assignedBreedId": "oahu_008",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "MLHILLR_19": {
+      "assigned": true,
+      "assignedBreedId": "oahu_009",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "DTBRAWL_20": {
+      "assigned": true,
+      "assignedBreedId": "oahu_010",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "HKSUN_21": {
+      "assigned": true,
+      "assignedBreedId": "maui_001",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "KPWING_22": {
+      "assigned": true,
+      "assignedBreedId": "maui_002",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "PIATRADE_23": {
+      "assigned": true,
+      "assignedBreedId": "maui_003",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "LHTIDE_24": {
+      "assigned": true,
+      "assignedBreedId": "maui_004",
+      "allowedClasses": [
+        "Ocean"
+      ]
+    },
+    "MARLSTRD_25": {
+      "assigned": true,
+      "assignedBreedId": "maui_005",
+      "allowedClasses": [
+        "Ocean"
+      ]
+    },
+    "UCTRAIL_26": {
+      "assigned": true,
+      "assignedBreedId": "maui_006",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "WLKSTONE_27": {
+      "assigned": true,
+      "assignedBreedId": "maui_007",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "KHSAND_28": {
+      "assigned": true,
+      "assignedBreedId": "maui_008",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "KPTRAIL_29": {
+      "assigned": true,
+      "assignedBreedId": "maui_009",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "HNRAIN_30": {
+      "assigned": true,
+      "assignedBreedId": "maui_010",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "KLPCLIFF_31": {
+      "assigned": true,
+      "assignedBreedId": "molokai_001",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "HLWVLY_32": {
+      "assigned": true,
+      "assignedBreedId": "molokai_002",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "MMBEACH_33": {
+      "assigned": true,
+      "assignedBreedId": "molokai_003",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "PPSHORE_34": {
+      "assigned": true,
+      "assignedBreedId": "molokai_004",
+      "allowedClasses": [
+        "Ocean"
+      ]
+    },
+    "EMREEF_35": {
+      "assigned": true,
+      "assignedBreedId": "molokai_005",
+      "allowedClasses": [
+        "Ocean"
+      ]
+    },
+    "KKDOCK_36": {
+      "assigned": true,
+      "assignedBreedId": "molokai_006",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "MLSTOMP_37": {
+      "assigned": true,
+      "assignedBreedId": "molokai_007",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "CMFIELD_38": {
+      "assigned": true,
+      "assignedBreedId": "molokai_008",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "KLNBRAW_39": {
+      "assigned": true,
+      "assignedBreedId": "molokai_009",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "FPMUD_40": {
+      "assigned": true,
+      "assignedBreedId": "molokai_010",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "LCHGLIDE_41": {
+      "assigned": true,
+      "assignedBreedId": "lanai_001",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "MNROWIND_42": {
+      "assigned": true,
+      "assignedBreedId": "lanai_002",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "SWBSCREAM_43": {
+      "assigned": true,
+      "assignedBreedId": "lanai_003",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "HLPBAY_44": {
+      "assigned": true,
+      "assignedBreedId": "lanai_004",
+      "allowedClasses": [
+        "Ocean"
+      ]
+    },
+    "PWREEF_45": {
+      "assigned": true,
+      "assignedBreedId": "lanai_005",
+      "allowedClasses": [
+        "Ocean"
+      ]
+    },
+    "GODSTONE_46": {
+      "assigned": true,
+      "assignedBreedId": "lanai_006",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "PNSTOMP_47": {
+      "assigned": true,
+      "assignedBreedId": "lanai_007",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "KMLHRB_48": {
+      "assigned": true,
+      "assignedBreedId": "lanai_008",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "MNLBLUFF_49": {
+      "assigned": true,
+      "assignedBreedId": "lanai_009",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "LNHTRAP_50": {
+      "assigned": true,
+      "assignedBreedId": "lanai_010",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "KLLAVA_51": {
+      "assigned": true,
+      "assignedBreedId": "hawaii_001",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "MKSUMMT_52": {
+      "assigned": true,
+      "assignedBreedId": "hawaii_002",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "WPVALLEY_53": {
+      "assigned": true,
+      "assignedBreedId": "hawaii_003",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "HLOSTMP_54": {
+      "assigned": true,
+      "assignedBreedId": "hawaii_004",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "KNCOFFEE_55": {
+      "assigned": true,
+      "assignedBreedId": "hawaii_005",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "PNTUBE_56": {
+      "assigned": true,
+      "assignedBreedId": "hawaii_006",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "KHLRAMB_57": {
+      "assigned": true,
+      "assignedBreedId": "hawaii_007",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "KAUDESR_58": {
+      "assigned": true,
+      "assignedBreedId": "hawaii_008",
+      "allowedClasses": [
+        "Ground"
+      ]
+    },
+    "MLHAWK_59": {
+      "assigned": true,
+      "assignedBreedId": "hawaii_009",
+      "allowedClasses": [
+        "Air"
+      ]
+    },
+    "KLKSHARK_60": {
+      "assigned": true,
+      "assignedBreedId": "hawaii_010",
+      "allowedClasses": [
+        "Ocean"
+      ]
+    }
+  }
+}
