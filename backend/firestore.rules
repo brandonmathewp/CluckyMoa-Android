@@ -71,10 +71,10 @@ service cloud.firestore {
       allow read, write: if isAdmin();
     }
 
-    // ── Telemetry Events (write-only for authenticated users, admin read) ────
+    // ── Telemetry Events (admin read; clients cannot write — Cloud Functions use Admin SDK) ──
     match /telemetry_events/{eventId} {
       allow read: if isAdmin();
-      allow write: if false; // only Cloud Functions write telemetry
+      allow write: if false; // clients cannot write; Cloud Functions use Admin SDK
     }
 
     // ── Default: deny all ───────────────────────────────────────────────────

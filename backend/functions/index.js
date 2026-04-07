@@ -51,11 +51,10 @@ function httpError(code, message) {
   return err;
 }
 
+const MILLIS_PER_HOUR = 3600 * 1000;
+
 function getDiscordWebhookUrl() {
-  return (
-    (typeof functions !== "undefined" && functions.config && functions.config().discord && functions.config().discord.webhook_url) ||
-    process.env.DISCORD_WEBHOOK_URL
-  );
+  return process.env.DISCORD_WEBHOOK_URL || null;
 }
 
 function rarityWeight(rarity) {
@@ -662,7 +661,12 @@ async function hatchEggLogic(eggId, ownerId) {
         genomeSeedBlob.parentAClass;
       const traitPool = CLASS_TRAIT_POOL[otherClass] || [];
       const traitCount = traitPool.length > 1 && rng() > 0.5 ? 2 : 1;
-      const shuffled = [...traitPool].sort(() => rng() - 0.5);
+      // Fisher-Yates shuffle for uniform distribution
+      const shuffled = [...traitPool];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
       for (let i = 0; i < Math.min(traitCount, shuffled.length); i++) {
         secondaryTraits.push(shuffled[i]);
       }
@@ -731,9 +735,9 @@ async function hatchEggLogic(eggId, ownerId) {
   // Phase 4E: Trade lock
   const tradeLock = {};
   if (rarity === "rare") {
-    tradeLock.tradeLockUntil = admin.firestore.Timestamp.fromMillis(now + 24 * 3600 * 1000);
+    tradeLock.tradeLockUntil = admin.firestore.Timestamp.fromMillis(now + 24 * MILLIS_PER_HOUR);
   } else if (rarity === "legendary") {
-    tradeLock.tradeLockUntil = admin.firestore.Timestamp.fromMillis(now + 72 * 3600 * 1000);
+    tradeLock.tradeLockUntil = admin.firestore.Timestamp.fromMillis(now + 72 * MILLIS_PER_HOUR);
   }
 
   const chickenRef = db.collection("chickens").doc();
@@ -1000,7 +1004,7 @@ exports.banUser = onCall(async(request) => {
   const adminUid = requireAuth(request);
 
   const now = nowMs();
-  const expiresAt = new Date(now + durationHours * 3600 * 1000);
+  const expiresAt = new Date(now + durationHours * MILLIS_PER_HOUR);
 
   const banRef = db.collection("bans").doc();
   const userRef = db.collection("users").doc(targetUserId);
