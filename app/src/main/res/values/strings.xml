@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">CluckyMoa</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_chickens">Chickens</string>
+    <string name="nav_breeds">Breeds</string>
+    <string name="nav_eggs">Eggs</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Empty states -->
+    <string name="empty_chickens">No chickens yet. Start exploring!</string>
+    <string name="empty_eggs">No eggs incubating.</string>
+
+    <!-- Chicken Detail -->
+    <string name="stats">Stats</string>
+    <string name="primary_ability">Primary Ability</string>
+    <string name="ultimate_ability">Ultimate Ability</string>
+    <string name="respec">Respec</string>
+    <string name="breed">Breed</string>
+
+    <!-- Breeding -->
+    <string name="no_parent_selected">No parent selected</string>
+    <string name="select_parent_b">Select Parent B</string>
+    <string name="preview_breeding">Preview Breeding</string>
+    <string name="confirm_breed">Confirm Breed</string>
+
+    <!-- Egg -->
+    <string name="hatch">Hatch!</string>
+
+    <!-- Profile -->
+    <string name="weekly_stats">Weekly Stats</string>
 </resources>

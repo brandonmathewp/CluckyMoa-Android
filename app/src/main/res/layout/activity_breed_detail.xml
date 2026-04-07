@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/text_breed_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/text_breed_class"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/text_breed_rarity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_breed_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/text_breed_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/text_spawn_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="13sp"
+            android:textColor="#666666" />
+
+        <!-- Base Stats -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/stats"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView android:id="@+id/text_stat_hp"     android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="14sp" />
+        <TextView android:id="@+id/text_stat_armor"  android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="14sp" />
+        <TextView android:id="@+id/text_stat_energy" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="14sp" />
+        <TextView android:id="@+id/text_stat_regen"  android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="14sp" />
+        <TextView android:id="@+id/text_stat_speed"  android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="14sp" />
+
+        <!-- Primary Ability -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/primary_ability"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView android:id="@+id/text_primary_ability_name"  android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="15sp" android:textStyle="bold" />
+        <TextView android:id="@+id/text_primary_ability_desc"  android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="13sp" />
+        <TextView android:id="@+id/text_primary_ability_stats" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="12sp" android:textColor="#555555" />
+
+        <!-- Ultimate Ability -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/ultimate_ability"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView android:id="@+id/text_ult_ability_name"  android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="15sp" android:textStyle="bold" />
+        <TextView android:id="@+id/text_ult_ability_desc"  android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="13sp" />
+        <TextView android:id="@+id/text_ult_ability_stats" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="12sp" android:textColor="#555555" />
+
+    </LinearLayout>
+
+</ScrollView>

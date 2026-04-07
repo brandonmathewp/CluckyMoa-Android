@@ -1,4 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Class colors -->
+    <color name="class_air">#87CEEB</color>
+    <color name="class_ground">#8B4513</color>
+    <color name="class_ocean">#006994</color>
 
+    <!-- Rarity colors -->
+    <color name="rarity_common">#808080</color>
+    <color name="rarity_uncommon">#2E8B57</color>
+    <color name="rarity_rare">#4169E1</color>
+    <color name="rarity_legendary">#FFD700</color>
+
+    <!-- Theme colors -->
+    <color name="colorPrimary">#006994</color>
+    <color name="colorPrimaryVariant">#004C6D</color>
+    <color name="colorSecondary">#87CEEB</color>
+    <color name="colorSecondaryVariant">#5BA0C8</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorError">#B00020</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="colorOnBackground">#000000</color>
+    <color name="colorOnSurface">#000000</color>
+    <color name="colorOnError">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#FF000000</color>
 </resources>
