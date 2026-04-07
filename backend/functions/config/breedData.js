@@ -1236,8 +1236,8 @@ const BREEDS = [
     primaryClass: "Ground",
     area: "Hawaii",
     rarity: "uncommon",
-    description: "Survives in the barren Ka'ū desert.",
-    spawnInfo: "Ka'ū desert south of Kīlauea.",
+    description: "Survives in the barren Kāʻū desert.",
+    spawnInfo: "Kāʻū desert south of Kīlauea.",
     baseStats: { hp: 110, armor: 60, energyCap: 86, energyRegen: 12, speed: 66 },
     primaryAbility: {
       name: "Desert Blast",

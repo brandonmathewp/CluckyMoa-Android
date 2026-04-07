@@ -24,7 +24,9 @@ public class RarityUtil {
             case "uncommon":  return "Uncommon";
             case "rare":      return "Rare";
             case "legendary": return "Legendary";
-            default:          return rarity.substring(0, 1).toUpperCase() + rarity.substring(1);
+            default:          return rarity.length() > 0
+                ? rarity.substring(0, 1).toUpperCase() + rarity.substring(1)
+                : "Unknown";
         }
     }
 }
